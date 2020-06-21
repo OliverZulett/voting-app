@@ -1,0 +1,38 @@
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark pt-4 pb-4 mb-5">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../assets/angular-logo.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+      loading="lazy"
+    />
+    {{titlePage}}
+  </a>
+</nav>
+
+<div class="container">
+    <h1>{{title}}</h1>
+    <p>Ingresa un juego por el cual votar.</p>
+    <form autocomplete="off" class="mt-4">
+        <div class="form-group">
+            <label for="title">Titulo:</label>
+            <input #newTitle type="text" id="title" class="form-control" aria-describedby="titleHelp">
+            <small id="titleHelp">Ingresa el titulo de tu videojuego favorito.</small>
+        </div>
+        <div class="form-group">
+            <label for="link">Link del videojuego:</label>
+            <input #newLink type="text" id="link" class="form-control" aria-describedby="linkHelp">
+            <small id="linkHelp">Ingresa el link del videojuego.</small>
+        </div>
+        <button (click)="addGame(newTitle, newLink)" type="submit" class="btn btn-dark">
+            Enviar juego
+        </button>
+    </form>
+
+    <app-game *ngFor="let game of sortGames()" [game]="game"></app-game>
+    
+</div>
+
